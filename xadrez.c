@@ -1,9 +1,7 @@
 #include <stdio.h>
 
-void main(){
-    
-    //Nível Novato - Movimentação das Peças
-    int torre=5,bispo=5,rainha=8,contadorWhile=1,contadorDoWhile=1;//Definindo variáveis
+void main(){ //Inicia o programa principal
+    int torre=5,bispo=5,rainha=8,contadorWhile=1,contadorDoWhile=1,flagCavalo=1;//Definindo variáveis
 
     printf("Torre:\n");//Informa qual vai ser a peça a se mover
     for(int i=1;i<=torre;i++){//Inicia a estrutura de repetição "for". A cada vez que identificar que a variável "i" for menor ou igual ao valor de variavel "torre", ele executará o código dentro da estrutura e logo após adicionará 1 em variável "i".
@@ -23,5 +21,12 @@ void main(){
         printf("Esquerda\n");
         contadorDoWhile++;//Impede loop infinito somando +1 na variável "contadorDoWhile"
     }while(contadorDoWhile<=rainha);//Adiciona a condição "enquanto" ou "while" a variável "contadorDoWhile" for menor ou igual a variável "rainha"
-    printf("Rainha se moveu 8 casas para esquerda.\n");//Informa quantas casas a peça se moveu
+    printf("Rainha se moveu %d casas para esquerda.\n",rainha);//Informa quantas casas a peça se moveu
+
+    while(flagCavalo--){//Inicia loop e ao finalizar, decrementa variável
+        for(int i=1; i<=2; i++){//Inicia loop aninhado
+            printf("Baixo, ");
+        }
+        printf("Esquerda.\n");
+    }
 }
