@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 void main(){ //Inicia o programa principal
-    int torre=5,bispo=5,rainha=8,contadorWhile=1,contadorDoWhile=1,flagCavalo=1;//Definindo variáveis
+    int torre=5,bispo=5,rainha=8,contadorWhile=1,contadorDoWhile=1,flagCavalo=1,horiCavalo=1,vertCavalo=2;//Definindo variáveis
 
     printf("Torre:\n");//Informa qual vai ser a peça a se mover
     for(int i=1;i<=torre;i++){//Inicia a estrutura de repetição "for". A cada vez que identificar que a variável "i" for menor ou igual ao valor de variavel "torre", ele executará o código dentro da estrutura e logo após adicionará 1 em variável "i".
@@ -29,4 +29,5 @@ void main(){ //Inicia o programa principal
         }
         printf("Esquerda.\n");
     }
+    printf("Cavalo se moveu %d casas para baixo e %d casas para a esqueda.\n",vertCavalo,horiCavalo);
 }
