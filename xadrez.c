@@ -1,33 +1,64 @@
 #include <stdio.h>
 
-void main(){ //Inicia o programa principal
-    int torre=5,bispo=5,rainha=8,contadorWhile=1,contadorDoWhile=1,flagCavalo=1,horiCavalo=1,vertCavalo=2;//Definindo variáveis
-
-    printf("Torre:\n");//Informa qual vai ser a peça a se mover
-    for(int i=1;i<=torre;i++){//Inicia a estrutura de repetição "for". A cada vez que identificar que a variável "i" for menor ou igual ao valor de variavel "torre", ele executará o código dentro da estrutura e logo após adicionará 1 em variável "i".
-        printf("Direita\n");
+void torreFunc(int n){ //Função da torre
+    if(n==0){ //Verifica se variável "n" é zero
+        return; //Se sim, encerra função
     }
-    printf("Torre se moveu %d casas para a direita.\n",torre);//Informa quantas casas a peça se moveu
+    printf("Direita\n"); //Print do movimento
+    torreFunc(n-1); //Recursividade
+}
 
-    printf("Bispo:\n");//Informa qual vai ser a peça a se mover
-    while(contadorWhile<=bispo){//Inicia a estrutura de repetição "while". Enquanto a variavel "contadorWhile" for menor ou igual a variável "bispo", ele executará o código.
-        printf("Cima e Direita\n");
-        contadorWhile++;//Aqui soma +1 na variável "contadorWhile" para não haver loop infinito
+void bispoFunc(int n){ //Função do bispo
+    if(n==0){ //Verifica se variável "n" é zero
+        return; //Se sim, encerra função
     }
-    printf("Bispo se moveu %d casas para a diagonal direita.\n",bispo);//Informa quantas casas a peça se moveu
-
-    printf("Rainha:\n");//Informa qual vai ser a peça a se mover
-    do{//Inicia a estrutura de repetição "do while". Indica qual código vai executar.
-        printf("Esquerda\n");
-        contadorDoWhile++;//Impede loop infinito somando +1 na variável "contadorDoWhile"
-    }while(contadorDoWhile<=rainha);//Adiciona a condição "enquanto" ou "while" a variável "contadorDoWhile" for menor ou igual a variável "rainha"
-    printf("Rainha se moveu %d casas para esquerda.\n",rainha);//Informa quantas casas a peça se moveu
-
-    while(flagCavalo--){//Inicia loop e ao finalizar, decrementa variável
-        for(int i=1; i<=2; i++){//Inicia loop aninhado
-            printf("Baixo, ");
+    for(int i=0; i<1; i++){ //Inicia loop externo
+        printf("Cima\n"); //Print do movimento
+        for(int j=0; j<1; j++){ //Inicia loop interno
+            printf("Direita\n"); //Print do Movimento
         }
-        printf("Esquerda.\n");
     }
-    printf("Cavalo se moveu %d casas para baixo e %d casas para a esqueda.\n",vertCavalo,horiCavalo);
+    bispoFunc(n-1); //Recursividade
+}
+
+void rainhaFunc(int n){ //Função da rainha
+    if(n==0){ //Verifica se variável "n" é zero
+        return; //Se sim, encerra função
+    }
+    printf("Esquerda\n"); //Print do movimento
+    rainhaFunc(n-1); //Recursividade
+}
+
+void cavaloFunc(int flagC, int horiC, int vertC){ //Função do cavalo
+    while(flagC--){ //Inicia loop e ao finalizar, decrementa variável
+        for(int i=1, j=2; i<=2 && j>=1; i++, j--){ //Inicia loop aninhado
+            if(i<=2){ //Verifica se variável é menor ou igual a 2
+                printf("Cima\n"); //Se sim, print de movimento
+            }
+            if(j==1){ //Verifica se variável é igual a 1
+                printf("Direita\n"); //Se sim, print de movimento
+                break; //Encerra loop
+            }
+        }
+    }
+}
+
+void main(){ //Inicia o programa principal
+    int torre=5,bispo=5,rainha=8,flagCavalo=1,horiCavalo=1,vertCavalo=2;//Definindo variáveis
+
+    printf("Torre:\n"); //Print de peça
+    torreFunc(torre); //Chama função
+    printf("Torre se moveu %d casas para a direita.\n",torre); //Print de quantas casas moveu
+
+    printf("\nBispo:\n"); //Print de peça
+    bispoFunc(bispo); //Chama função
+    printf("Bispo se moveu %d casas para a diagonal direita.\n",bispo); //Print de quantas casas moveu
+
+    printf("\nRainha:\n"); //Print de peça
+    rainhaFunc(rainha); //Chama função
+    printf("Rainha se moveu %d casas para a esquerda.\n", rainha); //Print de quantas casas moveu
+
+    printf("\nCavalo:\n"); //Print de peça
+    cavaloFunc(flagCavalo,horiCavalo,vertCavalo); //Chama função
+    printf("Cavalo se moveu %d casas para cima e %d casas para a direita.\n",vertCavalo,horiCavalo); //Print de quantas casas moveu
 }
